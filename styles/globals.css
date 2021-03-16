@@ -1,11 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-family: 'Patrick Hand', 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
 .btn {
-  @apply px-4 py-2 font-bold text-white bg-blue-500 rounded;
+  background-color: #fb4b00;
+  padding: 0.5em 1em;
+  color: white;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  border: 1px solid #fb4b00;
+  font-size: 0.875rem;
+
+  display: inline-block;
 }
 
 .td {
-  @apply border border-green-600;
+  @apply border border-blue-600;
+}
+
+.layout {
+  @apply w-11/12 max-w-5xl mx-auto my-auto;
+}
+
+.hero {
+  min-height: calc(100vh - 5rem);
+  @apply px-12 mt-10;
 }
