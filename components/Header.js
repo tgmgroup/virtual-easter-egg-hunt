@@ -16,11 +16,13 @@ export default function Header() {
           {user ? (
             <div className='flex items-center space-x-3'>
               <p className='hidden text-xl md:block'>Hello, {user.name}!</p>
-              <button className='text-sm md:text-md btn'>Profile</button>
+              <Link href='/profile'>
+                <button className='text-sm md:text-md btn'>Profile</button>
+              </Link>
             </div>
           ) : (
             <Link href='/auth/login'>
-              <a href='#' className='text-lg text-gray-800'>
+              <a href='#' className='text-lg text-gray-800' className='btn'>
                 Log in
               </a>
             </Link>

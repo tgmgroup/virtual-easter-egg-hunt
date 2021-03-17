@@ -7,7 +7,12 @@ export default function profile() {
   return (
     <>
       <Header />
-      <div>profile</div>;
+      <div className='flex flex-col items-center justify-center full-screen'>
+        <div>profile</div>
+        <button onClick={(e) => auth.signout()} className='btn'>
+          Sign out
+        </button>
+      </div>
     </>
   );
 }

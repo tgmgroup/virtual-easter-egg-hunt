@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import { getAllLinks, getLinkById } from '@/lib/db-admin';
-import { getGameConfig } from '@/lib/db';
+import { getGameConfig, getTheEgg } from '@/lib/db';
 import Header from '@/components/Header';
 import { eggs, eggX } from '@/data/images';
 import Image from 'next/image';
@@ -42,6 +42,7 @@ export async function getStaticPaths() {
 export default function GetTheEggPage({ link }) {
   const { user } = useAuth();
   const [image, setImage] = useState();
+  const router = useRouter();
 
   useEffect(() => {
     setImage(eggs[Math.floor(Math.random() * eggs.length)]);
@@ -114,6 +115,20 @@ export default function GetTheEggPage({ link }) {
     </>
   );
 
+  const handleGetTheEgg = async () => {
+    const data = {
+      id: link.id,
+      user: { id: user.uid, name: user.name }
+    };
+
+    const res = await getTheEgg(data);
+    if (res) {
+      router.push('/egg/successful');
+    } else {
+      router.push('/egg/failed');
+    }
+  };
+
   return (
     <>
       <Header />
@@ -123,6 +138,7 @@ export default function GetTheEggPage({ link }) {
           <button
             className='text-lg btn disabled:opacity-50 disabled:cursor-not-allowed'
             disabled={link.taken}
+            onClick={handleGetTheEgg}
           >
             Get the egg!
           </button>

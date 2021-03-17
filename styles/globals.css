@@ -43,20 +43,16 @@ body {
 }
 
 .hero {
-  min-height: calc(100vh - 7.5rem);
-  @apply px-10 mt-10;
+  min-height: calc(100vh - 4rem);
+  @apply px-10;
 }
 
 .full-screen {
-  min-height: calc(100vh - 7.5rem);
+  min-height: calc(100vh - 4rem);
 }
 
 @media (min-width: 768px) {
-  .hero {
+  /* .hero {
     min-height: calc(100vh - 5rem);
-  }
-
-  .full-screen {
-    min-height: calc(100vh - 5rem);
-  }
+  } */
 }
