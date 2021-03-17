@@ -8,13 +8,12 @@ export default function successful() {
         <div className='flex flex-col items-center'>
           <h1>Congratulation</h1>
           <h2>You got the egg!</h2>
-          <h3>Find more!</h3>
         </div>
         <div className='flex flex-col items-center'>
           <img
             src='/images/happy.png'
             alt='egg'
-            className='max-w-full w-5/8 md:w-2/5'
+            className='max-w-full w-5/8 md:w-1/3'
           />
           <a
             className='text-gray-500 underline'
