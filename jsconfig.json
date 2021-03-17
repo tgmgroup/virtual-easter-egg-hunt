@@ -9,11 +9,14 @@
       "@/components/*": [
         "components/*"
       ],
-      "@/styles/*": [
-        "styles/*"
+      "@/data/*": [
+        "data/*"
       ],
       "@/lib/*": [
         "lib/*"
+      ],
+      "@/styles/*": [
+        "styles/*"
       ],
       "@/utils/*": [
         "utils/*"

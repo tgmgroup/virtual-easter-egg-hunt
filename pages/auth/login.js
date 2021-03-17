@@ -14,9 +14,13 @@ export default function login() {
             Current User: <span>{auth.user?.email}</span>
           </h3>
           {auth.user ? (
-            <button onClick={(e) => auth.signout()}>Sign out</button>
+            <button onClick={(e) => auth.signout()} className='btn'>
+              Sign out
+            </button>
           ) : (
-            <button onClick={(e) => auth.siginWithGoogle()}>Sign In</button>
+            <button onClick={(e) => auth.siginWithGoogle()} className='btn'>
+              Sign In
+            </button>
           )}
         </div>
       </div>
