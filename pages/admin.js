@@ -2,9 +2,11 @@ import { v4 as uuid } from 'uuid';
 import { createLinks, startGame, endGame, resetGame } from '@/lib/db';
 import useSWR from 'swr';
 import fetcher from '@/utils/fetcher';
+import { useAuth } from '@/lib/auth';
 
 export default function admin() {
-  const { data } = useSWR('api/links', fetcher);
+  const { user } = useAuth();
+  const { data } = useSWR(user ? ['api/links', user.token] : null, fetcher);
 
   const buttonHandler = () => {
     let uids = [];
@@ -41,7 +43,7 @@ export default function admin() {
           </tr>
         </thead>
         <tbody>
-          {data?.links.map((link) => (
+          {data?.map((link) => (
             <tr key={link.id}>
               <td className='td'>{link.id}</td>
               <td className='td'>{link.user_id}</td>

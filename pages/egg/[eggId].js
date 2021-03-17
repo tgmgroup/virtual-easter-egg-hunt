@@ -1,13 +1,21 @@
 import { useRouter } from 'next/router';
 import { getAllLinks, getLinkById } from '@/lib/db-admin';
+import { getGameConfig } from '@/lib/db';
 import Header from '@/components/Header';
 import { eggs, eggX } from '@/data/images';
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '@/lib/auth';
 
 export async function getStaticProps(context) {
+  let link = null;
+
   const siteId = context.params.eggId;
-  const link = await getLinkById(siteId);
+  const game = await getGameConfig();
+
+  if (game.start) {
+    link = await getLinkById(siteId);
+  }
 
   return {
     props: {
@@ -17,7 +25,8 @@ export async function getStaticProps(context) {
 }
 
 export async function getStaticPaths() {
-  const links = await (await getAllLinks()).links;
+  const { links } = await getAllLinks();
+
   const paths = links.map((link) => ({
     params: {
       eggId: link.id.toString()
@@ -31,12 +40,34 @@ export async function getStaticPaths() {
 }
 
 export default function GetTheEggPage({ link }) {
+  const { user } = useAuth();
   const [image, setImage] = useState();
 
   useEffect(() => {
     setImage(eggs[Math.floor(Math.random() * eggs.length)]);
-    console.log(link);
   }, []);
+
+  if (!user) {
+    return (
+      <>
+        <Header />
+        <div className='flex flex-col items-center justify-center space-y-6 full-screen layout'>
+          <h2>You have not logged in yet!</h2>
+        </div>
+      </>
+    );
+  }
+
+  if (!link) {
+    return (
+      <>
+        <Header />
+        <div className='flex flex-col items-center justify-center space-y-6 full-screen layout'>
+          <h2>The game has not been started</h2>
+        </div>
+      </>
+    );
+  }
 
   const eggAvailable = (
     <>
