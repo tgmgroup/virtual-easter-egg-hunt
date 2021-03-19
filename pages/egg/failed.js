@@ -14,7 +14,7 @@ export default function failed() {
           <img
             src='/images/sad.png'
             alt='egg'
-            className='max-w-full w-5/8 md:w-1/3'
+            className='max-w-full w-5/8 md:w-1/4'
           />
           <a
             className='text-gray-500 underline'

@@ -1,13 +1,45 @@
 import { useRouter } from 'next/router';
-import { getAllLinks, getLinkById } from '@/lib/db-admin';
-import { getGameConfig, getTheEgg } from '@/lib/db';
+// import { getAllLinks, getLinkById } from '@/lib/db-admin';
+import { getGameConfig, getTheEgg, getLinkById } from '@/lib/db';
 import Header from '@/components/Header';
 import { eggs, eggX } from '@/data/images';
-import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/lib/auth';
 
-export async function getStaticProps(context) {
+// export async function getStaticProps(context) {
+//   let link = null;
+
+//   const siteId = context.params.eggId;
+//   const game = await getGameConfig();
+
+//   if (game.start) {
+//     link = await getLinkById(siteId);
+//   }
+
+//   return {
+//     props: {
+//       link: link
+//     }
+//   };
+// }
+
+// export async function getStaticPaths() {
+//   const { links } = await getAllLinks();
+
+//   const paths = links.map((link) => ({
+//     params: {
+//       eggId: link.id.toString()
+//     }
+//   }));
+
+//   return {
+//     paths,
+//     fallback: false
+//   };
+// }
+
+export async function getServerSideProps(context) {
+  // console.log(context);
   let link = null;
 
   const siteId = context.params.eggId;
@@ -21,21 +53,6 @@ export async function getStaticProps(context) {
     props: {
       link: link
     }
-  };
-}
-
-export async function getStaticPaths() {
-  const { links } = await getAllLinks();
-
-  const paths = links.map((link) => ({
-    params: {
-      eggId: link.id.toString()
-    }
-  }));
-
-  return {
-    paths,
-    fallback: false
   };
 }
 

@@ -13,7 +13,7 @@ export default function successful() {
           <img
             src='/images/happy.png'
             alt='egg'
-            className='max-w-full w-5/8 md:w-1/3'
+            className='max-w-full w-5/8 md:w-1/4'
           />
           <a
             className='text-gray-500 underline'
