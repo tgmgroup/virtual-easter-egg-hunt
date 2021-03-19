@@ -39,7 +39,6 @@ import { useAuth } from '@/lib/auth';
 // }
 
 export async function getServerSideProps(context) {
-  // console.log(context);
   let link = null;
 
   const siteId = context.params.eggId;
