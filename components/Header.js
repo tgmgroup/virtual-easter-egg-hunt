@@ -14,11 +14,20 @@ export default function Header() {
         </Link>
         <nav className='space-x-5'>
           {user ? (
-            <div className='flex items-center space-x-3'>
-              <p className='hidden text-xl md:block'>Hello, {user.name}!</p>
+            <div className='flex items-center space-x-2'>
               <Link href='/profile'>
-                <button className='text-sm md:text-md btn'>Profile</button>
+                <p className='hidden text-xl underline cursor-pointer text-gray-800-600 md:block'>
+                  {user.name}
+                </p>
               </Link>
+              <img
+                src={user.photoUrl}
+                alt={user.name}
+                className='w-10 rounded-full'
+              />
+              {/* <Link href='/profile'>
+                <button className='text-sm md:text-md btn'>Profile</button>
+              </Link> */}
             </div>
           ) : (
             <Link href='/auth/login'>
