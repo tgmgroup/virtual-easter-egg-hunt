@@ -9,6 +9,7 @@ export default function admin() {
   const { user } = useAuth();
   const { data } = useSWR(user ? ['api/links', user.token] : null, fetcher);
   const [linkTotal, setLinkTotal] = useState(10);
+  const [copied, setCopied] = useState([]);
 
   const buttonHandler = async () => {
     let uids = [];
@@ -20,13 +21,20 @@ export default function admin() {
     mutate('api/links', user.token);
   };
 
+  const clickToCopy = (e, idx) => {
+    const newCopied = [...copied];
+    newCopied[idx] = true;
+    setCopied(newCopied);
+    navigator.clipboard.writeText(e.target.innerHTML);
+  };
+
   return (
     <div className='flex flex-col items-center space-y-5'>
       <div className='space-x-3'>
         <input
           type='text'
           value={linkTotal}
-          className='w-10 px-2 border-2 border-gray-700 rounded-md'
+          className='w-20 px-2 border-2 border-gray-700 rounded-md'
           onChange={(e) => setLinkTotal(e.target.value)}
         />
         <button className='btn' onClick={buttonHandler}>
@@ -57,7 +65,15 @@ export default function admin() {
             <tr key={link.id}>
               <td className='td'>{index + 1}</td>
               <td className='td'>
-                {`${window.location.origin}/egg/${link.id}`}
+                <span
+                  onClick={(e) => clickToCopy(e, index)}
+                  className={`cursor-pointer hover:text-blue-700 hover:underline ${
+                    copied[index] ? 'font-bold line-through' : ''
+                  }`}
+                >{`${window.location.origin}/egg/${link.id}`}</span>
+                <span className='font-bold text-red-700'>{` ${
+                  copied[index] ? 'copied' : ''
+                }`}</span>
               </td>
               <td className='td'>{link.user_id}</td>
               <td className='td'>{link.name}</td>
