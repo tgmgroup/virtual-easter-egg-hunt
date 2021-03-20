@@ -20,8 +20,9 @@ export default function leaderboard() {
           <thead>
             <tr>
               <td className='px-6'>Rank</td>
+              <td className='px-6'></td>
               <td className='px-6'>Name</td>
-              <td className='px-6'>Eggs</td>
+              <td className='px-6'>Egg Total</td>
             </tr>
           </thead>
           <tbody>
@@ -29,9 +30,18 @@ export default function leaderboard() {
               <tr key={rank.user_id}>
                 <td className='px-6 py-1 text-center'>{index + 1}</td>
                 <td className='px-6 py-1 text-center'>
-                  {rank.name} <img src={rank.photoUrl} alt='' />
+                  <img
+                    src={rank.photoUrl}
+                    alt=''
+                    className='w-16 rounded-full'
+                  />
                 </td>
-                <td className='px-6 py-1 text-center'>{rank.eggs} Eggs</td>
+                <td className='px-6 py-1 space-x-2 text-center'>
+                  <span>{rank.name}</span>
+                </td>
+                <td className='px-6 py-1 text-center'>
+                  {rank.eggs} {rank.eggs > 1 ? ' eggs' : ' egg'}
+                </td>
               </tr>
             ))}
           </tbody>
