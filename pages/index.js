@@ -17,7 +17,11 @@ export default function Home() {
             <h1>Welcome to KKI DC</h1>
             <h2 className='mb-6'>Virtual Easter Egg Hunt</h2>
 
-            {auth.user ? null : (
+            {auth.user ? (
+              <Link href='/leaderboard'>
+                <button className='text-xl btn'>Leaderboard</button>
+              </Link>
+            ) : (
               <Link href='/auth/login'>
                 <button className='text-xl btn'>Register Here!</button>
               </Link>
