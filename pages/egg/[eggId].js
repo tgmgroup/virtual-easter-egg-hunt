@@ -134,7 +134,7 @@ export default function GetTheEggPage({ link }) {
   const handleGetTheEgg = async () => {
     const data = {
       id: link.id,
-      user: { id: user.uid, name: user.name }
+      user: { id: user.uid, name: user.name, photoUrl: user.photoUrl }
     };
 
     const res = await getTheEgg(data);
