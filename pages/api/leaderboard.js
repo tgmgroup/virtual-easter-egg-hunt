@@ -23,7 +23,7 @@ export default async (_, res) => {
       rank.push(leaderboard[key]);
     }
 
-    rank.sort((a, b) => b - a);
+    rank.sort((a, b) => b.eggs - a.eggs);
 
     res.status(200).json(rank);
   } catch (error) {
