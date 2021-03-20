@@ -28,7 +28,9 @@ export default function leaderboard() {
             {data?.map((rank, index) => (
               <tr key={rank.user_id}>
                 <td className='px-6 py-1 text-center'>{index + 1}</td>
-                <td className='px-6 py-1 text-center'>{rank.name}</td>
+                <td className='px-6 py-1 text-center'>
+                  {rank.name} <img src={rank.photoUrl} alt='' />
+                </td>
                 <td className='px-6 py-1 text-center'>{rank.eggs} Eggs</td>
               </tr>
             ))}

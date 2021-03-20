@@ -9,7 +9,8 @@ export default async (_, res) => {
       if (!leaderboard[link.user_id]) {
         leaderboard[link.user_id] = {
           name: link.name,
-          eggs: 1
+          eggs: 1,
+          photoUrl: link.photoUrl
         };
       } else {
         leaderboard[link.user_id].eggs++;
