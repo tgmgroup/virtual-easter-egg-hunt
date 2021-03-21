@@ -6,7 +6,7 @@ import fetcher from '@/utils/fetcher';
 export default function profile() {
   const { user, signout } = useAuth();
   const { data } = useSWR(user ? ['api/eggs', user.token] : null, fetcher);
-  console.log(data);
+
   return (
     <>
       <Header />
