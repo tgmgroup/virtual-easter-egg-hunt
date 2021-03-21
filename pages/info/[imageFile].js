@@ -11,7 +11,7 @@ export default function ImagePage() {
         <img
           src={`/images/info/${router.query.imageFile}.jpg`}
           alt='egg'
-          className='max-w-full w-5/8 md:w-1/3'
+          className='max-w-full w-5/8 md:w-2/5'
         />
       </div>
     </>
