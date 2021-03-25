@@ -8,6 +8,11 @@ import React, { useState } from 'react';
 export default function admin() {
   const { user } = useAuth();
   const { data } = useSWR(user ? ['api/links', user.token] : null, fetcher);
+  const { data: gameData } = useSWR(
+    user ? ['api/game', user.token] : null,
+    fetcher
+  );
+
   const [linkTotal, setLinkTotal] = useState(10);
   const [copied, setCopied] = useState([]);
 
@@ -18,7 +23,19 @@ export default function admin() {
       uids.push(uid);
     }
     await createLinks(uids);
-    mutate('api/links', user.token);
+    mutate(['api/links', user.token]);
+  };
+
+  const buttonStartGameHandler = async () => {
+    await startGame();
+    console.log('mutate');
+    mutate(['api/game', user.token]);
+  };
+
+  const buttonEndGameHandler = async () => {
+    await endGame();
+    console.log('mutate');
+    mutate(['api/game', user.token]);
   };
 
   const clickToCopy = (e, idx) => {
@@ -27,6 +44,14 @@ export default function admin() {
     setCopied(newCopied);
     navigator.clipboard.writeText(e.target.innerHTML);
   };
+
+  if (!user) {
+    return (
+      <div className='flex flex-col items-center justify-center h-screen space-y-5'>
+        You are not login
+      </div>
+    );
+  }
 
   return (
     <div className='flex flex-col items-center space-y-5'>
@@ -40,16 +65,17 @@ export default function admin() {
         <button className='btn' onClick={buttonHandler}>
           Create link
         </button>
-        <button className='btn' onClick={startGame}>
+        <button className='btn' onClick={buttonStartGameHandler}>
           Start Game
         </button>
-        <button className='btn' onClick={endGame}>
+        <button className='btn' onClick={buttonEndGameHandler}>
           End Game
         </button>
         <button className='btn' onClick={resetGame}>
           Reset Game
         </button>
       </div>
+      <div>Game is {gameData?.start ? 'Start' : 'End'}</div>
       <table className='border-2 border-collapse border-black table-auto'>
         <thead>
           <tr>

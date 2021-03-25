@@ -9,7 +9,7 @@ export default function leaderboard() {
     user ? ['api/leaderboard', user.token] : null,
     fetcher
   );
-  console.log(data);
+
   return (
     <>
       <Header />
