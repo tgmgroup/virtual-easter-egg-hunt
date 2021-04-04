@@ -49,7 +49,10 @@ export default function GetTheEggPage({ link }) {
     <>
       <div className='text-center'>
         <h2>The egg has been taken by</h2>
-        <h2>John Doe</h2>
+        <h3>John Doe</h3>
+        <i class='text-sm text-gray-400 px-0 py-0 m-0'>
+          click x button to close
+        </i>
       </div>
       <div className='flex flex-col items-center '>
         <img src={eggX} alt='egg' className='img' />
@@ -78,7 +81,7 @@ export default function GetTheEggPage({ link }) {
   return (
     <>
       <Header />
-      <div className='flex flex-col items-center justify-center space-y-6 full-screen layout'>
+      <div className='flex flex-col items-center justify-center space-y-4 full-screen layout'>
         {eggNotAvailable}
         <div className='flex flex-col items-center justify-center space-y-2'>
           <button

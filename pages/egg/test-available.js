@@ -70,7 +70,7 @@ export default function GetTheEggPage({ link }) {
   return (
     <>
       <Header />
-      <div className='flex flex-col items-center justify-center space-y-6 full-screen layout'>
+      <div className='flex flex-col items-center justify-center space-y-4 full-screen layout'>
         {eggAvailable}
         <div className='flex flex-col items-center justify-center space-y-2'>
           <button className='text-lg btn disabled:opacity-50 disabled:cursor-not-allowed'>
