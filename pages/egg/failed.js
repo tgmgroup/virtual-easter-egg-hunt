@@ -6,9 +6,12 @@ export default function failed() {
       <Header />
       <div className='flex flex-col items-center justify-center space-y-6 full-screen layout'>
         <div className='flex flex-col items-center'>
-          <h1>Oh no! You lost the egg</h1>
-          <h2>Someone was faster than you, Sorry!</h2>
-          <h3>Find more!</h3>
+          <h2>Oh no! You lost the egg</h2>
+          <h3>Someone was faster than you, Sorry!</h3>
+          <h3>
+            Find more!{' '}
+            <i class='text-md text-gray-400'>click x button to close</i>
+          </h3>
         </div>
         <div className='flex flex-col items-center'>
           <img

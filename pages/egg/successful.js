@@ -6,8 +6,11 @@ export default function successful() {
       <Header />
       <div className='flex flex-col items-center justify-center space-y-6 full-screen layout'>
         <div className='flex flex-col items-center'>
-          <h1>Congratulation</h1>
-          <h2>You got the egg!</h2>
+          <h3>Congratulation! You got the egg!</h3>
+          <h3>
+            Find more!{' '}
+            <i class='text-md text-gray-400'>click x button to close</i>
+          </h3>
         </div>
         <div className='flex flex-col items-center'>
           <img

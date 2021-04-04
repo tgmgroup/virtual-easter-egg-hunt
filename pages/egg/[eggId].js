@@ -105,7 +105,7 @@ export default function GetTheEggPage({ link }) {
     <>
       <div className='text-center'>
         <h2>The egg has been taken by</h2>
-        <h2>{link.name}</h2>
+        <h3>{link.name}</h3>
       </div>
       <div className='flex flex-col items-center '>
         <img src={eggX} alt='egg' className='img' />
