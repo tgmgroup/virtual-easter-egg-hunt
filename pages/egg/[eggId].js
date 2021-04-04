@@ -90,7 +90,7 @@ export default function GetTheEggPage({ link }) {
     <>
       <h1>This egg is still available!</h1>
       <div className='flex flex-col items-center'>
-        <img src={image} alt='egg' className='w-1/3 max-w-full' />
+        <img src={image} alt='egg' className='img' />
         <a
           className='text-gray-500 underline'
           href='https://www.freepik.com/vectors/design'
@@ -108,7 +108,7 @@ export default function GetTheEggPage({ link }) {
         <h2>{link.name}</h2>
       </div>
       <div className='flex flex-col items-center '>
-        <img src={eggX} alt='egg' className='w-1/3 max-w-full' />
+        <img src={eggX} alt='egg' className='img' />
         <div>
           Designed by{' '}
           <a
