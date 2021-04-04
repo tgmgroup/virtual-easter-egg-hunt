@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
-// import { getAllLinks, getLinkById } from '@/lib/db-admin';
-import { getGameConfig, getTheEgg, getLinkById } from '@/lib/db';
+import { getGameConfig } from '@/lib/db';
 import Header from '@/components/Header';
-import { eggs, eggX } from '@/data/images';
+import { eggs } from '@/data/images';
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/lib/auth';
 
@@ -64,36 +63,6 @@ export default function GetTheEggPage({ link }) {
         >
           Designed by freepik
         </a>
-      </div>
-    </>
-  );
-
-  const eggNotAvailable = (
-    <>
-      <div className='text-center'>
-        <h2>The egg has been taken by</h2>
-        <h2>{link.name}</h2>
-      </div>
-      <div className='flex flex-col items-center '>
-        <img src={eggX} alt='egg' className='img' />
-        <div>
-          Designed by{' '}
-          <a
-            href='https://www.flaticon.com/authors/pixel-perfect'
-            title='Pixel perfect'
-            className='text-gray-500 underline'
-          >
-            Pixel perfect
-          </a>{' '}
-          from{' '}
-          <a
-            href='https://www.flaticon.com/'
-            title='Flaticon'
-            className='text-gray-500 underline'
-          >
-            flaticon
-          </a>
-        </div>
       </div>
     </>
   );
