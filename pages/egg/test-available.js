@@ -6,46 +6,13 @@ import { eggs, eggX } from '@/data/images';
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '@/lib/auth';
 
-// export async function getStaticProps(context) {
-//   let link = null;
-
-//   const siteId = context.params.eggId;
-//   const game = await getGameConfig();
-
-//   if (game.start) {
-//     link = await getLinkById(siteId);
-//   }
-
-//   return {
-//     props: {
-//       link: link
-//     }
-//   };
-// }
-
-// export async function getStaticPaths() {
-//   const { links } = await getAllLinks();
-
-//   const paths = links.map((link) => ({
-//     params: {
-//       eggId: link.id.toString()
-//     }
-//   }));
-
-//   return {
-//     paths,
-//     fallback: false
-//   };
-// }
-
 export async function getServerSideProps(context) {
   let link = null;
 
-  const siteId = context.params.eggId;
   const game = await getGameConfig();
 
   if (game.start) {
-    link = await getLinkById(siteId);
+    link = {};
   }
 
   return {
@@ -131,33 +98,33 @@ export default function GetTheEggPage({ link }) {
     </>
   );
 
-  const handleGetTheEgg = async () => {
-    const data = {
-      id: link.id,
-      user: { id: user.uid, name: user.name, photoUrl: user.photoUrl }
-    };
-
-    const res = await getTheEgg(data);
-    if (res) {
-      router.push('/egg/successful');
-    } else {
-      router.push('/egg/failed');
-    }
-  };
-
   return (
     <>
       <Header />
       <div className='flex flex-col items-center justify-center space-y-6 full-screen layout'>
-        {link.taken ? eggNotAvailable : eggAvailable}
-        <div>
-          <button
-            className='text-lg btn disabled:opacity-50 disabled:cursor-not-allowed'
-            disabled={link.taken}
-            onClick={handleGetTheEgg}
-          >
+        {eggAvailable}
+        <div className='flex flex-col items-center justify-center space-y-2'>
+          <button className='text-lg btn disabled:opacity-50 disabled:cursor-not-allowed'>
             Get the egg!
           </button>
+          <div className='space-x-3'>
+            <button
+              className='px-2 py-1 text-lg text-white bg-gray-600 rounded-lg'
+              onClick={() => {
+                router.push('/egg/successful');
+              }}
+            >
+              Get the egg Successful!
+            </button>
+            <button
+              className='px-2 py-1 text-lg text-white bg-gray-600 rounded-lg'
+              onClick={() => {
+                router.push('/egg/failed');
+              }}
+            >
+              Get the egg Failed!
+            </button>
+          </div>
         </div>
       </div>
     </>
