@@ -10,16 +10,13 @@ a Virtual Easter Egg Hunt app for [gather.town](https://gather.town/)
 - Users can see their basket
 - Users can click to grab the egg
 - Users can't grab an egg that has been taken by someone
-- Users can see the game results
-- Users can see the game history
+- Users can see the game leaderboards
 
 **Admin**
 - Admin can start the game (The link is active)
 - Admin can stop the game (The link is deactivate)
-- Admin can create a game
 - Admin can create eggs(bulk)
-- Admin can delete an egg
-- Admin can edit an egg
+
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
