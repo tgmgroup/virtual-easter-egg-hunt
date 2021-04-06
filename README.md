@@ -1,5 +1,5 @@
 # virtual-easter-egg-hunt
-a Virtual Easter Egg Hunt app for [gather.town](https://gather.town/)
+a Virtual Easter Egg Hunt app using [gather.town](https://gather.town/)
 
 ## User Story
 
