@@ -10,7 +10,7 @@ a Virtual Easter Egg Hunt app using [gather.town](https://gather.town/)
 - Users can see their basket
 - Users can click to grab the egg
 - Users can't grab an egg that has been taken by someone
-- Users can see the game leaderboards
+- Users can see the game leaderboard
 
 **Admin**
 - Admin can start the game (The link is active)
