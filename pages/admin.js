@@ -28,13 +28,11 @@ export default function admin() {
 
   const buttonStartGameHandler = async () => {
     await startGame();
-    console.log('mutate');
     mutate(['api/game', user.token]);
   };
 
   const buttonEndGameHandler = async () => {
     await endGame();
-    console.log('mutate');
     mutate(['api/game', user.token]);
   };
 

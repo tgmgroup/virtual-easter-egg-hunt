@@ -15,8 +15,13 @@ export default function Header() {
         <nav className='space-x-5'>
           {user ? (
             <div className='flex items-center space-x-2'>
+              <Link href='/leaderboard'>
+                <p className='hidden pr-3 text-xl border-r-2 border-gray-600 cursor-pointer text-primary text-gray-800-600 md:block '>
+                  Leaderboard
+                </p>
+              </Link>
               <Link href='/profile'>
-                <p className='hidden text-xl underline cursor-pointer text-gray-800-600 md:block'>
+                <p className='hidden text-xl text-gray-800 underline cursor-pointer md:block'>
                   {user.name}
                 </p>
               </Link>
